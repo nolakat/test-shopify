@@ -21,7 +21,7 @@ const Navigation = ({ siteTitle }) => {
   const [hasItems, quantity] = useQuantity()
 
 	return(
-		<Wrapper>
+		<Wrapper id="site-navigation">
 			<Container>
 				<MenuLink to='/'>
 					{siteTitle}

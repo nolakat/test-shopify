@@ -5,14 +5,13 @@ import { breakpoints } from '../../utils/styles'
 
 export const Wrapper = styled.div`
   background: rebeccapurple;
-  margin-bottom: 1.45rem;
 `
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 1.45rem;
+  padding: 10px;
   margin: 0 auto;
   max-width: 960px;
 `
@@ -20,11 +19,11 @@ export const Container = styled.div`
 export const MenuLink = styled(Link)`
   color: white;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
 
   @media (max-width: ${breakpoints.s}px){
-    font-size: 1.4rem
+    font-size: 1rem
   }
 `
 

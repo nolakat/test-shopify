@@ -8,6 +8,7 @@ import ContextProvider from '~/provider/ContextProvider'
 import { GlobalStyle } from '~/utils/styles'
 import Navigation from '~/components/Navigation'
 
+
 const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 960px;
@@ -31,14 +32,12 @@ const Layout = ({ children }) => {
         render={data => (
           <>
             <Navigation siteTitle={data.site.siteMetadata.title} />
-            <Wrapper>
               {children}
               <footer>
                 © {new Date().getFullYear()}, Built with
                 {` `}
                 <a href="https://www.gatsbyjs.org">Gatsby</a>
               </footer>
-            </Wrapper>
           </>
         )}
       />

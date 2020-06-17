@@ -1,0 +1,45 @@
+:root {
+    font-size: 20px;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #606063;
+    overflow: hidden;
+    font-family: "News Cycle", sans-serif;
+  }
+  
+  #___gatsby, #gatsby-focus-wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  canvas {
+    position: absolute;
+  }
+
+  #site-navigation{
+      border: 2px solid red;
+      z-index: 9999;
+      position: sticky;
+      top: 0;
+  }
+  
+  .loading {
+    padding: 10px;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  
+  .scrollArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+  }
+  
