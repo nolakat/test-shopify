@@ -1,6 +1,8 @@
 import lerp from "lerp"
 import React, { Suspense, useRef, useEffect } from "react"
 import { Canvas, Dom, useFrame, useLoader } from "react-three-fiber"
+import { HTML } from 'drei'
+
 import { TextureLoader, LinearFilter } from "three"
 import { useSiteMetadata } from "../../hooks/use-site-metadata"
 import { useShopifyProducts } from "../../hooks/use-shopify-products"
@@ -36,7 +38,8 @@ function Cross() {
 }
 
 function Content({ left, children, map }) {
-  const { contentMaxWidth, canvasWidth, margin } = useBlock()
+  const { contentMaxWidth, canvasWidth, margin} = useBlock()
+
   const aspect = 1.75
   const alignRight = (canvasWidth - contentMaxWidth - margin) / 2
   return (
@@ -51,38 +54,47 @@ function Stripe() {
   const { contentMaxWidth } = useBlock()
   return <Plane scale={[100, contentMaxWidth, 1]} rotation={[0, 0, Math.PI / 4]} position={[0, 0, -1]} color="#e3f6f5" />
 }
+
   
-const ScrollRig = () =>{
+function ScrollRig ({allProducts}){
+  const { contentMaxWidth, mobile } = useBlock()
 
-  const scrollArea = useRef()
-  const onScroll = e => (state.top.current = e.target.scrollTop)
-  useEffect(() => void onScroll({ target: scrollArea.current }), [])
+  let factorTicker = 1;
+  
+  const product_images = allProducts.map(product => product.images[0].originalSrc)
+  const textures = useLoader(TextureLoader, product_images);
+  const product_textures = textures.map(texture => ((texture.minFilter = LinearFilter), texture))
 
-  const { title } = useSiteMetadata()
-  const { edges } = useShopifyProducts()
 
-  console.log('title', title);
-  console.log('products', edges);
+  const aspect = 1.75
+  const pixelWidth = contentMaxWidth * state.zoom
 
-    return(
-        <>
-      <Canvas orthographic camera={{ zoom: state.zoom, position: [0, 0, 500] }}>
-             {/* First section */}
-            <Block factor={1.5} offset={0}>
-                <Content left >
-                </Content>
-            </Block>
+  var middle = allProducts[Math.round((allProducts.length - 1) / 2)].id;
 
-             {/* Second section */}
-            <Block factor={2.0} offset={1}>
-                <Content />
-            </Block>
-        </Canvas>
-        <div className="scrollArea" ref={scrollArea} onScroll={onScroll}>
-        <div style={{ height: `${state.pages * 100}vh` }} />
-      </div>
-        </>
-    )
+  console.log('middle', middle);
+
+ 
+
+  return(
+    
+    allProducts.map((product, index) =>{
+        factorTicker = factorTicker + 0.5;
+        console.log('product', product);
+
+        
+            return(
+                    <Block key={index} factor={factorTicker} offset={index}>
+                        <Content left={index % 2 == false}  map={product_textures[index]}>
+                            <HTML style={{ width: pixelWidth / (mobile ? 1 : 2), textAlign: "left" }} position={[-contentMaxWidth / 2, -contentMaxWidth / 2 / aspect - 0.4, 1]}>
+                                {product.description}
+                            </HTML>
+                        </Content>
+                    </Block>
+                )
+        })
+             
+  )
+        
 }
 
 

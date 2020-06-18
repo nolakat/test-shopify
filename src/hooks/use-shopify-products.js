@@ -17,6 +17,7 @@ export const useShopifyProducts = () => {
                 node {
                   id
                   title
+                  description
                   handle
                   createdAt
                   images {
