@@ -36,7 +36,7 @@
     "react-three-fiber": "^4.2.10",
     "set-value": "^2.0.1",
     "shopify-buy": "^2.8.0",
-    "three": "^0.117.1"
+    "three": "^0.125.0"
   },
   "keywords": [
     "gatsby",
