@@ -1,5 +1,4 @@
 import { useStaticQuery, graphql } from "gatsby"
-import StoreContext from '~/context/StoreContext'
 
 
 export const useShopifyProducts = () => {
@@ -20,6 +19,8 @@ export const useShopifyProducts = () => {
                   description
                   handle
                   createdAt
+                  tags
+                  availableForSale
                   images {
                     id
                     originalSrc
@@ -33,6 +34,7 @@ export const useShopifyProducts = () => {
                   }
                   variants {
                     price
+                    availableForSale
                   }
                 }
               }

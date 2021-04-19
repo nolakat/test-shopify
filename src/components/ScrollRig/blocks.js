@@ -28,7 +28,6 @@ function useBlock() {
   const { sections, pages, zoom } = state
   const { size, viewport } = useThree()
   const offset = useContext(offsetContext)
-  const test = 'hello'
   const viewportWidth = viewport.width
   const viewportHeight = viewport.height
   const canvasWidth = viewportWidth / zoom
@@ -47,8 +46,7 @@ function useBlock() {
     mobile,
     margin,
     contentMaxWidth,
-    sectionHeight, 
-    test
+    sectionHeight
   }
 }
 

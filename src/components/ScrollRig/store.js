@@ -1,6 +1,4 @@
 import { createRef } from "react"
-import { useStaticQuery, graphql, Link } from 'gatsby'
-
 
 
 

@@ -18,9 +18,9 @@
     overflow: hidden;
   }
   
-  canvas {
-    position: absolute;
-  }
+  // canvas {
+  //   position: absolute;
+  // }
 
   #site-navigation{
       border: 2px solid red;
@@ -41,4 +41,23 @@
     width: 100vw;
     height: 100vh;
     overflow: auto;
+  }
+
+  .productBlock__header{
+    width: max-content !important;
+
+    h2{
+      margin: 0px;
+    }
+  }
+  
+
+  .productBlock__description{
+    pointer-events: none;
+  }
+
+  canvas{
+    background: lightblue;
+    border: 5px solid blue;
+    height: 50000px;
   }
